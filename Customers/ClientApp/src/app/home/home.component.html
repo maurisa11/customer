@@ -1,0 +1,80 @@
+<h1>Customer - Create</h1>
+<p>
+  This is a demo application that accepts customer information and save it in the database
+</p>
+<form #customerForm="ngForm" (submit)="save()">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <div class="alert alert-success" *ngIf="successMessage">
+        {{successMessage}}
+      </div>
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <label class="form-label" for="lastName">Last Name</label>
+      <input
+        [(ngModel)]="customer.LastName"
+        name="lastName"
+        type="text"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="col-md-6 form-group">
+      <label class="form-label" for="firstName">First Name</label>
+      <input
+        [(ngModel)]="customer.FirstName"
+        name="firstName"
+        type="text"
+        class="form-control"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 form-group">
+      <label class="form-label" for="email">Email</label>
+      <input
+        [(ngModel)]="customer.Email"
+        name="email"
+        type="email"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="col-md-4 form-group">
+      <label class="form-label" for="email">Address</label>
+      <input
+        [(ngModel)]="customer.Address"
+        name="address"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="col-md-4 form-group">
+      <label class="form-label" for="gender">Gender</label>
+      <select [(ngModel)]="customer.Gender" name="gender" class="form-control" required>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+        <option value="3">Trans</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row text-right">
+    <div class="form-group col-md-12">
+      <button type="button" class="btn btn-secondary" (click)="clean()"> Clean form </button>
+      <button type="submit" class="btn btn-primary" [disabled]="!customerForm.valid">
+        Save
+      </button>
+    </div>
+  </div>
+
+</form>
+
+
